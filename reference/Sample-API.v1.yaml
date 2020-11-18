@@ -14,7 +14,7 @@ paths:
         required: true
         description: The user's Id to search for.
     get:
-      summary: Your GET endpoint
+      summary: Get User Info by User ID
       tags: []
       responses:
         '200':
@@ -36,13 +36,13 @@ paths:
         '404':
           description: User Not Found
       operationId: get-users-userId
-      description: Retrieve the information of the user with the matching userId.
+      description: Retrieve the information of the user with the matching user ID.
 components:
   schemas:
     User:
       title: User
       type: object
-      description: A model that represents a single platform user.
+      description: Reflects a single user in platform.
       x-examples:
         Alice Smith:
           id: 142
