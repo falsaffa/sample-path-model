@@ -148,7 +148,7 @@ components:
     User:
       title: User
       type: object
-      description: Represents a single registeted user.
+      description: ''
       x-examples:
         Alice Smith:
           id: 142
