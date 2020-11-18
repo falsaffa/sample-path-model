@@ -12,7 +12,7 @@ paths:
         name: userId
         in: path
         required: true
-        description: ''
+        description: The user's Id to search for.
     get:
       summary: Your GET endpoint
       tags: []
