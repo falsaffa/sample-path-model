@@ -1,24 +1,22 @@
 openapi: 3.0.0
 info:
-  title: Sample API
+  title: API YAY
   version: '1.0'
-  description: ''
-  co
 servers:
-  - url: 'http://localhost:3000/wer'
+  - url: 'http://localhost:3000'
 paths:
-  '/users/{userId}/new':
+  '/users/{userId}':
     parameters:
-      - 
       - schema:
-          type: string
+          type: integer
         name: userId
         in: path
         required: true
         description: Id of an existing user.
     get:
       summary: Get User Info by User ID
-      tags: []
+      tags:
+        - t
       responses:
         '200':
           description: User Found
@@ -36,10 +34,6 @@ paths:
                     dateOfBirth: '1997-10-31'
                     emailVerified: true
                     signUpDate: '2019-08-24'
-          headers:
-            header-0:
-              schema:
-                type: string
         '404':
           description: User Not Found
       operationId: get-users-userId
@@ -68,7 +62,7 @@ paths:
           description: User Not Found
         '409':
           description: Email Already Taken
-      description: Update the infromation of an existing user.
+      description: Update the information of an existing user.
       requestBody:
         content:
           application/json:
@@ -96,25 +90,32 @@ paths:
                   lastName: Baker
                   dateOfBirth: '1985-10-02'
         description: Patch user properties to update.
+      tags:
+        - t2
   /user:
     post:
       summary: Create New User
       operationId: post-user
       responses:
         '200':
-          $ref: '#/components/responses/Test'
-        '201':
-          description: Created
-          headers:
-            header-1:
+          description: User Created
+          content:
+            application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/User'
+              examples:
+                New User Bob Fellow:
+                  value:
+                    id: 12
+                    firstName: Bob
+                    lastName: Fellow
+                    email: bob.fellow@gmail.com
+                    dateOfBirth: '1996-08-24'
+                    emailVerified: false
+                    createDate: '2020-11-18'
+                    some: null
         '400':
           description: Missing Required Information
-          headers:
-            header-0:
-              schema:
-                type: string
         '409':
           description: Email Already Taken
       requestBody:
@@ -146,12 +147,6 @@ paths:
                   dateOfBirth: '1996-08-24'
         description: Post the necessary fields for the API to create a new user.
       description: Create a new user.
-      parameters:
-        - schema:
-            type: string
-          in: header
-          description: Te
-    parameters: []
 components:
   schemas:
     User:
@@ -195,32 +190,5 @@ components:
         - lastName
         - email
         - emailVerified
-  parameters:
-    Test:
-      name: Test
-      in: header
-      required: false
-      schema:
-        type: string
-      description: Type is cool
-    Test-Cookie:
-      name: Test Cookie
-      in: path
-      required: true
-      schema:
-        type: string
-    Query-Param:
-      name: Query Param
-      in: query
-      required: false
-      schema:
-        type: string
-  responses:
-    Test:
-      description: Example response
-      content:
-        application/json:
-          schema:
-            properties:
-              id:
-                type: string
+      x-tags:
+        - taggg
